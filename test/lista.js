@@ -61,5 +61,12 @@ describe("lista de pares clave:valor",function(){
         assert.equal(list.count(), 1)
     })
   })
+  describe("Cuando se agrega elemento", function() {
+    var list = new List()
+    list.add("primera",5)
+    it("Puedo recuperar una lista con claves almacenadas", function(){
+        assert.equal(list.getKeys().length, 1)
+    })
+  })
 
 })

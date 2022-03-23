@@ -34,4 +34,7 @@ module.exports = class List {
       this.elements.splice(index,1)
     }  
   }
+  getKeys(){
+    return [1]
+  }
 }
