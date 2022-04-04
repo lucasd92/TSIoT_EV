@@ -61,12 +61,28 @@ describe("lista de pares clave:valor",function(){
         assert.equal(list.count(), 1)
     })
   })
-  describe("Cuando se agrega elemento", function() {
+  describe("A partir de la lista", function() {
     var list = new List()
-    list.add("primera",5)
-    it("Puedo recuperar una lista con claves almacenadas", function(){
-        assert.equal(list.getKeys().length, 1)
+    
+    it("Puedo recuperar una lista vacía con claves almacenadas ordenadas", function(){
+      assert.sameOrderedMembers(list.getOrderedKeys(),[])
     })
+
+    it("Puedo recuperar una lista con un elemento y claves almacenadas ordenadas", function(){
+        list.add("primera",5)
+        assert.sameOrderedMembers(list.getOrderedKeys(),["primera"])
+    })
+    
+    it("Con un nuevo elemento al final, la lista sigue ordenada", function(){
+      list.add("aaa",5)
+      assert.sameOrderedMembers(list.getOrderedKeys(),["aaa","primera"])
+    })
+
+    it("Con un nuevo elemento al inicio, la lista sigue ordenada", function(){
+      list.add("bbb",5,"beginning")
+      assert.sameOrderedMembers(list.getOrderedKeys(),["aaa","bbb","primera"])
+    })
+
   })
 
 })
